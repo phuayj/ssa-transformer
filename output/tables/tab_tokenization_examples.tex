@@ -1,0 +1,59 @@
+% Auto-generated tokenization examples.
+% Do not edit by hand; rerun the generator to regenerate.
+
+\paragraph{SAT, satisfying trace ($n=3$, $4$ clauses).}
+\begin{footnotesize}
+\begin{verbatim}
+# Problem prefix P
+[BOS] [CLAUSES] C0 : +v0 -v1 +v2 SEP C1 : -v0 +v1 +v2 SEP C2 : +v0 +v1 -v2
+SEP C3 : -v0 -v1 +v2 SEP [SEARCH]
+
+# Decision block B1
+STATE v0 U v1 U v2 U SEP [PROP] C0 : +v0 -v1 +v2 SEP +v0 U -v1 U +v2 U SEP
+SAT_OK [/PROP] v0 T OK v0 T
+
+# Decision block B2
+STATE v1 U v2 U SEP [PROP] C1 : -v0 +v1 +v2 SEP -v0 F +v1 U +v2 U SEP
+SAT_OK [/PROP] v1 T OK v1 T
+
+# Decision block B3
+STATE v2 U SEP [PROP] C3 : -v0 -v1 +v2 SEP -v0 F -v1 F +v2 U SEP UNIT
+[/PROP] v2 T OK v2 T SOLVED [EOS]
+\end{verbatim}
+\end{footnotesize}
+
+\paragraph{SAT, trace ending in a conflict ($n=3$, $6$ clauses).}
+\begin{footnotesize}
+\begin{verbatim}
+# Problem prefix P
+[BOS] [CLAUSES] C0 : +v0 +v1 +v2 SEP C1 : +v0 +v1 -v2 SEP C2 : +v0 -v1 +v2
+SEP C3 : +v0 -v1 -v2 SEP C4 : -v0 +v1 +v2 SEP C5 : -v0 +v1 -v2 SEP [SEARCH]
+
+# Decision block B1
+STATE v0 U v1 U v2 U SEP [PROP] C0 : +v0 +v1 +v2 SEP +v0 U +v1 U +v2 U SEP
+SAT_OK [/PROP] v2 F OK v2 F
+
+# Decision block B2
+STATE v0 U v1 U SEP [PROP] C0 : +v0 +v1 +v2 SEP +v0 U +v1 U +v2 F SEP
+SAT_OK [/PROP] v0 F OK v0 F
+
+# Decision block B3
+STATE v0 U v1 U SEP [PROP] C0 : +v0 +v1 +v2 SEP +v0 F +v1 U +v2 F SEP UNIT
+[/PROP] CONFLICT C5 BJ L0 [EOS]
+\end{verbatim}
+\end{footnotesize}
+
+\paragraph{Graph coloring, satisfying trace ($n=4$, $4$-cycle).}
+\begin{footnotesize}
+\begin{verbatim}
+# Problem prefix P
+[BOS] [GRAPH] N0 : N1 N3 SEP N1 : N0 N2 SEP N2 : N1 N3 SEP N3 : N0 N2 SEP
+[SEARCH]
+
+# Decision block B1
+STATE DS4 N0 DS4 N1 DS4 N2 DS4 N3 SEP N0 M1111 C1 OK
+
+# Decision block B2
+STATE DS3 N1 DS4 N2 DS3 N3 SEP N1 M0111 C2 OK SOLVED [EOS]
+\end{verbatim}
+\end{footnotesize}
